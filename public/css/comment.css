@@ -1,0 +1,51 @@
+.review-container {
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 3rem;
+
+    .user {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.242);
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 1rem;
+
+        .top-user {
+            display: flex;
+            gap: 1rem;
+            max-height: 4rem;
+
+            .username-comment{
+                display: flex;
+                flex-direction: column;
+                gap: 0.1rem;
+                margin: none;
+                
+                h4{
+                    font-weight: 300;
+
+                    span{
+                        color: rgba(186, 216, 125, 0.863);
+                        font-weight: 500;
+                    }
+                }
+
+                p{
+                    font-weight: 200;
+                }
+            }
+
+            .comment-pfp {
+                height: 4rem;
+                width: 4rem;
+            }
+        }
+
+        .bottom-user{
+            margin-top: 1rem;
+        }
+    }
+}
+

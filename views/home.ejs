@@ -1,0 +1,33 @@
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<% layout('./partials/navbar') -%>
+
+    <div class="container d-flex flex-wrap gap-4 mt-4 justify-content-center">
+
+        <% products.forEach(product=> { %>
+            <div class="card" style='width: 18.5rem;'>
+                <img src="<%= product.imageLink %>" class="card-img-top img-home"
+                    alt="Internet Connection establish karlo bhai">
+                <div class="card-below">
+                    <h5 class="card-title">
+                        <%= product.name %>
+                    </h5>
+                    <div class="flex-price">
+                        <h5 class="card-text" style="font-weight: 200; margin: 0;">₹ <%= product.price %>
+                        </h5>
+                        <p class="card-text" style="font-weight: 300;">
+                            <%= product.description.substring(0, 20) %>...
+                        </p>
+                    </div>
+                    <div class="card-text">
+                        <% if(product.colorsAvailable) for( let color of product.colorsAvailable ) { %>
+                            <div class="clr" style="background-color: <%= color %>"></div>
+                            <% } %>
+                    </div>
+                    <a style="display: flex; justify-content: center;" href="/products/<%= product._id %>"
+                        class="btn btn-sm btn-primary show-btn">Show</a>
+                </div>
+            </div>
+            <% }); %>
+    </div>

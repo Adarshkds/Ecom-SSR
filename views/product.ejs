@@ -1,0 +1,116 @@
+<head>
+    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/stars.css">
+    <link rel="stylesheet" href="/css/comment.css">
+</head>
+<% layout('./boilerplate/boilerPlate') -%>
+
+
+    <div class="container">
+        <div id="demo" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="card">
+                        <div class="path"><a id="back-home" href="/products">HOME</a> / <a
+                                style="text-transform: uppercase; color:rgba(186, 216, 125, 0.863);">
+                                <%= product.name %>
+                            </a> </div>
+                        <div class="row">
+                            <div class="col-md-6 text-center align-self-center img-parent"> <img class="img-fluid"
+                                    src="<%= product.imageLink %>"> </div>
+                            <div class="col-md-6 info">
+                                <div class="row title">
+                                    <div class="col">
+                                        <h2 class="prod-name">
+                                            <%= product.name %>
+                                        </h2>
+                                    </div>
+                                    <div class="col text-right"><a href="#"><i class="fa fa-heart-o"></i></a></div>
+                                </div>
+                                <p class="product-desc">
+                                    <%= product.description %>,<br>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Nesciunt beatae a hic dolores ab cupiditate doloribus ex at debitis quod
+                                        assumenda quo illo doloremque obcaecati quisquam incidunt quam ad, veniam sint
+                                        voluptatum distinctio facere. Culpa impedit ad aliquam nesciunt expedita
+                                        consequuntur veniam delectus. Mollitia, ducimus.
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore perferendis
+                                        provident excepturi eligendi labore recusandae veritatis rem nisi necessitatibus
+                                        placeat.
+                                </p>
+                                <div class="desc-down">
+                                    <div class="left-desc">
+                                        <span class="reviews prod-price">₹<%= product.price %></span><br>
+                                        <!-- <p class="starability-result" data-rating="<%= (totalStars/(5*product.reviews.length)) %>">
+                                        </p> -->
+                                        <span class="reviews"><%= product.reviews.length %> Reviews</span>
+                                        <div class="card-text">
+                                            <% if(product.colorsAvailable) for( let color of product.colorsAvailable ) {
+                                                %>
+                                                <div class="clr" style="background-color: <%= color %>"></div>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="right-desc">
+                                        <form action="/products/<%= product._id %>/add" method="post">
+                                            <label for="">Leave your reviews:</label>
+                                            <fieldset class="starability-basic">
+                                                <input type="radio" id="no-rate" class="input-no-rate" name="rating"
+                                                    value="0" checked aria-label="No rating." />
+                                                <input type="radio" id="first-rate1" name="rating" value="1" />
+                                                <label for="first-rate1" title="Terrible">1 star</label>
+                                                <input type="radio" id="first-rate2" name="rating" value="2" />
+                                                <label for="first-rate2" title="Not good">2 stars</label>
+                                                <input type="radio" id="first-rate3" name="rating" value="3" />
+                                                <label for="first-rate3" title="Average">3 stars</label>
+                                                <input type="radio" id="first-rate4" name="rating" value="4" />
+                                                <label for="first-rate4" title="Very good">4 stars</label>
+                                                <input type="radio" id="first-rate5" name="rating" value="5" />
+                                                <label for="first-rate5" title="Amazing">5 stars</label>
+                                            </fieldset>
+                                            <!-- <label for="comment">Review:</label> -->
+                                            <textarea name="comment" id="comment" cols="30" rows="2"
+                                                placeholder="Review Here..."></textarea>
+                                            <button>Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row lower">
+                            <div class="col text-right align-self-center low-row">
+                                <a href="/products/<%= product._id %>/delete"><button class="btn">Delete</button></a>
+                                <a href="/products/<%= product._id %>/edit"><button class="btn">Edit</button></a>
+                                <a href=""><button class="btn">Buy Now</button></a>
+                                <a href=""><button class="btn">Add to cart</button></a>
+                            </div>
+                        </div>
+
+                        <div class="review-container">
+                            <% for(let review of product.reviews){ %>
+                                <div class="user">
+                                    <div class="top-user">
+                                        <img class="comment-pfp"
+                                            src="http://bootdey.com/img/Content/user_1.jpg"
+                                            alt="user-image">
+                                        <div class="username-comment">
+                                            <h4><span>User</span> commented</h4>
+                                            <p>1 min ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="bottom-user">
+                                        <p class="starability-result" data-rating="<%= review.rating %>">
+                                        </p>
+                                        <p>
+                                            <%=review.comment%>
+                                        </p>
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
