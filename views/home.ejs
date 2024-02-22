@@ -3,31 +3,51 @@
 </head>
 <% layout('./partials/navbar') -%>
 
-    <div class="container d-flex flex-wrap gap-4 mt-4 justify-content-center">
 
-        <% products.forEach(product=> { %>
-            <div class="card" style='width: 18.5rem;'>
-                <img src="<%= product.imageLink %>" class="card-img-top img-home"
-                    alt="Internet Connection establish karlo bhai">
-                <div class="card-below">
-                    <h5 class="card-title">
-                        <%= product.name %>
-                    </h5>
-                    <div class="flex-price">
-                        <h5 class="card-text" style="font-weight: 200; margin: 0;">₹ <%= product.price %>
-                        </h5>
-                        <p class="card-text" style="font-weight: 300;">
-                            <%= product.description.substring(0, 20) %>...
-                        </p>
-                    </div>
-                    <div class="card-text">
-                        <% if(product.colorsAvailable) for( let color of product.colorsAvailable ) { %>
-                            <div class="clr" style="background-color: <%= color %>"></div>
-                            <% } %>
-                    </div>
-                    <a style="display: flex; justify-content: center;" href="/products/<%= product._id %>"
-                        class="btn btn-sm btn-primary show-btn">Show</a>
+    <% if (success && success.length) { %>
+        <div class="success-error-alert alert alert-warning alert-dismissible fade show" role="alert">
+            <p>
+                <%= success %>
+            </p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+
+            <% if (error && error.length) { %>
+                <div class=" success-error-alert alert alert-danger alert-dismissible fade show" role="alert">
+                    <p>
+                        <%= error %>
+                    </p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-            </div>
-            <% }); %>
-    </div>
+                <% } %>
+                    <div class="container d-flex flex-wrap gap-4 mt-4 justify-content-center">
+
+                        <% products.forEach(product=> { %>
+                            <div class="card" style='width: 18.5rem;'>
+                                <img src="<%= product.imageLink %>" class="card-img-top img-home"
+                                    alt="Internet Connection establish karlo bhai">
+                                <div class="card-below">
+                                    <h5 class="card-title">
+                                        <%= product.name %>
+                                    </h5>
+                                    <div class="flex-price">
+                                        <h5 class="card-text" style="font-weight: 200; margin: 0;">₹ <%= product.price
+                                                %>
+                                        </h5>
+                                        <p class="card-text" style="font-weight: 300;">
+                                            <%= product.description.substring(0, 20) %>...
+                                        </p>
+                                    </div>
+                                    <div class="card-text">
+                                        <% if(product.colorsAvailable) for( let color of product.colorsAvailable ) { %>
+                                            <div class="clr" style="background-color: <%= color %>"></div>
+                                            <% } %>
+                                    </div>
+                                    <a style="display: flex; justify-content: center;"
+                                        href="/products/<%= product._id %>"
+                                        class="btn btn-sm btn-primary show-btn">Show</a>
+                                </div>
+                            </div>
+                            <% }); %>
+                    </div>

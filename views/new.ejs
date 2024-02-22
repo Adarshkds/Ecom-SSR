@@ -1,20 +1,26 @@
 <% layout('/boilerplate/boilerPlate') -%>
-    <form style="width: 60vw; margin: 2rem auto; border: 1px solid rgba(0, 0, 0, 0.231); padding: 1rem; border-radius: 1rem;" action="/products/new" method="post" >
+    <form
+        style="width: 60vw; margin: 2rem auto; border: 1px solid rgba(0, 0, 0, 0.231); padding: 1rem; border-radius: 1rem;"
+        action="/products/new" method="post">
         <div class="mb-3">
             <label for="prod-name" class="form-label">Product Name:</label>
-            <input name="name" type="text" class="form-control" id="prod-name" placeholder="Enter Product Name" required maxlength="12">
+            <input name="name" type="text" class="form-control" id="prod-name" placeholder="Enter Product Name" required
+                maxlength="12">
         </div>
         <div class="mb-3">
             <label for="prod-imageLink" class="form-label">Image Link:</label>
-            <input name="imageLink" type="text" class="form-control" id="prod-imageLink" placeholder="Provide Image Link Here" required >
+            <input name="imageLink" type="text" class="form-control" id="prod-imageLink"
+                placeholder="Provide Image Link Here">
         </div>
         <div class="mb-3">
             <label for="prod-price" class="form-label">Price:</label>
-            <input name="price" type="number" class="form-control" id="prod-price" placeholder="Enter Price" min="0"  required>
+            <input name="price" type="number" class="form-control" id="prod-price" placeholder="Enter Price" min="0"
+                required>
         </div>
         <div class="mb-3">
             <label for="prod-colors" class="form-label">Choose upto 4 colors:</label>
-            <input name="colors" type="text" class="form-control" id="prod-colors" placeholder="Use commas if multiple colors available" >
+            <input name="colors" type="text" class="form-control" id="prod-colors"
+                placeholder="Use commas if multiple colors available">
         </div>
         <div class="mb-3" style="display: flex; flex-direction: column;">
             <label for="prod-description" class="form-label">Product Description:</label>

@@ -43,7 +43,9 @@
                                         <span class="reviews prod-price">₹<%= product.price %></span><br>
                                         <!-- <p class="starability-result" data-rating="<%= (totalStars/(5*product.reviews.length)) %>">
                                         </p> -->
-                                        <span class="reviews"><%= product.reviews.length %> Reviews</span>
+                                        <span class="reviews">
+                                            <%= product.reviews.length %> Reviews
+                                        </span>
                                         <div class="card-text">
                                             <% if(product.colorsAvailable) for( let color of product.colorsAvailable ) {
                                                 %>
@@ -87,26 +89,39 @@
                         </div>
 
                         <div class="review-container">
-                            <% for(let review of product.reviews){ %>
-                                <div class="user">
-                                    <div class="top-user">
-                                        <img class="comment-pfp"
-                                            src="http://bootdey.com/img/Content/user_1.jpg"
-                                            alt="user-image">
-                                        <div class="username-comment">
-                                            <h4><span>User</span> commented</h4>
-                                            <p>1 min ago</p>
-                                        </div>
-                                    </div>
-                                    <div class="bottom-user">
-                                        <p class="starability-result" data-rating="<%= review.rating %>">
-                                        </p>
-                                        <p>
-                                            <%=review.comment%>
-                                        </p>
-                                    </div>
+                            <% if(success.length){ %>
+                                <div class="success-error-alert alert alert-warning alert-dismissible fade show" role="alert">
+                                    <p>
+                                        <%= success %>
+                                    </p>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
                                 </div>
-                                <% } %>
+                                <%}%>
+                                    <% for(let review of product.reviews){ %>
+                                        <div class="user">
+                                            <div class="top-user">
+                                                <img class="comment-pfp" src="http://bootdey.com/img/Content/user_1.jpg"
+                                                    alt="user-image">
+                                                <div class="username-comment">
+                                                    <h4><span>User</span> commented</h4>
+                                                    <p>1 min ago</p>
+                                                </div>
+                                                <div class="delete-comment">
+                                                    <a
+                                                        href="/products/<%= review._id %>/deletecomment/<%= product._id %>"><button
+                                                            class="btn btn-cmt">Delete Comment</button></a>
+                                                </div>
+                                            </div>
+                                            <div class="bottom-user">
+                                                <p class="starability-result" data-rating="<%= review.rating %>">
+                                                </p>
+                                                <p>
+                                                    <%=review.comment%>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <% } %>
                         </div>
 
                     </div>
